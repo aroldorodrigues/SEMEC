@@ -1,0 +1,118 @@
+{% extends "blank.html" %}
+
+{% block barra %}
+
+{% endblock %}
+{% block central %}
+<style>
+  /* Estilos para centralizar o formulário */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Alterado para alinhar os itens ao topo */
+    height: 100vh;
+    /* Define a altura da área de visualização para ocupar toda a altura da tela */
+    padding-top: 20px;
+    /* Adiciona um espaço superior */
+  }
+
+  /* Estilos para o formulário */
+  .login-form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-form table {
+    width: 100%;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  .login-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .login-form input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .login-form p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+</style>
+
+<div class="login-container">
+  <div class="login-form">
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Sua conta não tem acesso a esta página. Para prosseguir,
+      faça login com uma conta que tenha acesso.</p>
+    {% else %}
+    <center>
+      <p style="font-weight: bold; font-size: 24px; color: #13855c;">LOGIN-SIGA</p>
+    </center>
+
+    {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}" style="text-align: center;">
+      {% csrf_token %}
+      <div style="display: inline-block; text-align: left;">
+        <table style="margin: 0 auto;">
+          <tr>
+            {% comment %} <td style="text-align: right; padding-right;">Usuário:</td> {% endcomment %}
+            <td><input type="text" name="username" placeholder="Digite seu Usuário" style="width: 200px;" /></td>
+          </tr>
+          <tr>
+            {% comment %} <td style="text-align: right; padding-right;">Senha:</td> {% endcomment %}
+            <td><input type="password" name="password" placeholder="Digite sua Senha" style="width: 200px;" /></td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <input type="submit" value="ENTRAR" style="background-color: #13855c; width: 200px; margin-top;" />
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+
+
+    {% if form.errors %}
+    <center>
+      <p id="error-message" style="font-weight: bold; color: red;">Seu usuário ou senha não correspondem. Por favor,
+        tente novamente!</p>
+    </center>
+    <script>
+      // Função para remover a mensagem de erro após 5 segundos
+      setTimeout(function () {
+        var errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+          errorMessage.remove();
+        }
+      }, 5000); // 5000 milissegundos = 5 segundos
+    </script>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

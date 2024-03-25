@@ -1,0 +1,33 @@
+{% extends 'blank.html' %}
+{% block central %}
+<div style="margin-top: 20px;"> <!-- Adiciona um espaço de 20 pixels no topo -->
+    <h1>Lista de Escolas</h1>
+    <hr>
+
+    <form action="?" method="GET"> 
+        <input type="text" name="nome" id="" value="{{ request.GET.nome}}" class = "p-1 border" autocomplete="off" placeholder="Nome ou parte dele...">
+        <button type="submit" class="btn btn-success">Buscar</button>
+        <a href="{% url 'programas' %}" class="btn btn-light">Limpar</a>
+    </form>
+
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>INEP</th>
+                <th>Nome</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for escola in escolas %}
+            <tr>
+                <td>{{ escola.inep }}</td>
+                <td>{{ escola.nome }}</td>
+                <td>{{ escola.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

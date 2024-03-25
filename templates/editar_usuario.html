@@ -1,0 +1,92 @@
+
+{% extends 'blank.html' %}
+{% block central %}
+
+<h2>Editar Usuário</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Exibir a imagem atual -->
+    {% if form.instance.imagem_perfil %}
+    <img src="{{ form.instance.imagem_perfil.url }}" alt="Imagem Atual" width="100" height="120">
+    {% endif %}
+    
+    <!-- Adicionar campo de upload de imagem -->
+    <label for="id_imagem_perfil">Editar Imagem:</label>
+    {{ form.imagem_perfil }}
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_nome">Nome:</label>
+            {{ form.nome }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_rg">RG:</label>
+            {{ form.rg }}
+        </div>
+        <div class="form-group col-md-4"style="text-align: right;">
+            <label for="id_org_expedidor">Org expedidor:</label>
+            {{ form.org_expedidor }}
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cpf">CPF:</label>
+            {{ form.cpf }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group col-md-4"style="text-align: right;">
+            <label for="id_telefone">Telefone:</label>
+            {{ form.telefone }}
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cargo">Cargo:</label>
+            {{ form.cargo }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_vinculo">Vínculo:</label>
+            {{ form.vinculo }}
+        </div>
+        <div class="form-group col-md-4"style="text-align: right;">
+            <label for="id_ch">CH:</label>
+            {{ form.ch }}
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_instituicao">Instituição:</label>
+            {{ form.instituicao }}
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_escolaridade">Escolaridade:</label>
+            {{ form.escolaridade }}
+        </div>
+        <div class="form-group col-md-4"style="text-align: right">
+            <label for="id_endereco">Endereço:</label>
+            {{ form.endereco }}
+        </div>
+    </div>
+
+    <button type="submit">Salvar alterações</button>
+</form>
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+{% endblock %}

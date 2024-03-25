@@ -1,0 +1,153 @@
+{% extends 'blank.html' %}
+{% load static %}
+
+{% block central %}
+<!-- nome_do_app/templates/visualizar_usuarios.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visualizar Usuários</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .usuario-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgba(152, 230, 149, 0.3);
+            /* Amarelo com 30% de opacidade */
+        }
+
+        .usuario-item img {
+            margin-right: 20px;
+            margin-left: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+            width: 100px;
+            height: 100px;
+        }
+
+        .btn {
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background-color: #0755ff;
+            border-color: #000000;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #727272;
+            border-color: #000000;
+        }
+
+        .btn-danger {
+            background-color: #c73f2d;
+            border-color: #000000;
+        }
+
+        .btn-danger:hover,
+        .btn-danger:focus {
+            background-color: #727272;
+            border-color: #000000;
+        }
+        .btn-secondary{
+            background-color: #3ab422;
+            border-color: #000000;
+        }
+
+        #confirmacaoModal .modal-content {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    {% for usuario in usuarios %}
+    <div class="usuario-item">
+        <img src="{{ usuario.imagem_perfil.url | default:'/media/img/perfil_generico.jpg' }}" alt="Foto do Usuário">
+        <div>
+            <h4>{{ usuario.nome }}</h4>
+            <p><strong>CPF:</strong> {{ usuario.cpf }}</p>
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+            <span id="pontos_{{ usuario.id }}"></span>
+            <span id="mais_{{ usuario.id }}" style="display:none;">
+                <p><strong>Telefone:</strong> {{ usuario.telefone }}</p>
+                <p><strong>Carga horária:</strong> {{ usuario.ch }}</p>
+            </span>
+            <button class="btn btn-primary" onclick="mostrarDetalhes({{ usuario.id }})">Mais/Menos</button>
+            <button class="btn btn-danger" onclick="confirmarExclusao({{ usuario.id }})">Excluir</button>
+            <a href="{% url 'editar_usuario' usuario.id %}">
+                <button class="btn btn-secondary">Editar</button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <form id="form_excluir_usuario" method="post" action="{% url 'visualizar_usuarios' %}">
+        {% csrf_token %}
+        <input type="hidden" name="excluir_usuario_id" id="excluir_usuario_id" value="">
+    </form>
+
+    <div class="modal fade" id="confirmacaoModal" tabindex="-1" role="dialog" aria-labelledby="confirmacaoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmacaoModalLabel">Confirmação de Exclusão</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir este usuário?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmarExclusaoFinal()"
+                        id="confirmarExclusaoBtn">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function mostrarDetalhes(usuarioId) {
+        var pontosId = 'pontos_' + usuarioId;
+        var maisId = 'mais_' + usuarioId;
+
+        $('#' + maisId).toggle();
+        $('#' + pontosId).toggle();
+    }
+
+    function confirmarExclusao(usuarioId) {
+        $('#confirmacaoModal').modal('show');
+        $('#confirmarExclusaoBtn').data('usuario-id', usuarioId);
+    }
+
+    function confirmarExclusaoFinal() {
+        var usuarioId = $('#confirmarExclusaoBtn').data('usuario-id');
+
+        document.getElementById('excluir_usuario_id').value = usuarioId;
+        document.getElementById('form_excluir_usuario').submit();
+    }
+</script>
+
+</html>
+{% endblock %}
+
+
+
+{% block funcionarios %}
+<li class="nav-item">
+    <a class="nav-link" href="">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Funcionários Cadastrados</span></a>
+</li>
+{% endblock %}
+
