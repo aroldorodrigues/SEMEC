@@ -1,14 +1,9 @@
-# nome_do_app/views.py
 from django.shortcuts import render, redirect
-
-from escolas_conectadas_app.models import Escolas
 from .forms import UsuarioForm
 from django.contrib import messages
 from django.http import HttpResponse
-# nome_do_app/views.py
 from django.shortcuts import render, get_object_or_404
 from .models import Usuario
-# nome_do_app/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario
 from django.contrib.auth.decorators import login_required,permission_required
@@ -42,9 +37,6 @@ def cadastrar_usuarios(request):
     else:
         form = UsuarioForm()
     return render (request,'cadastrar_usuarios.html', {'form': form})
-
-def home(request):
-     return render(request, 'inicio.html')
 
 def editar_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, id=usuario_id)
