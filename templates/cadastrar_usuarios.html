@@ -3,92 +3,118 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Cadastrar Usuário</h1>
+   
+    <style>
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_nome">Nome:</label>
-                {{ form.nome }}
+        form {
+            width: 100%;
+            max-width: 2200px; /* Defina o tamanho máximo conforme necessário */
+        }
+    </style>
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+       
+        <form method="post" enctype="multipart/form-data" class="text-center">
+            {% csrf_token %}
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-4">
+                    <label for="id_nome">Nome:</label>
+                    <input type="text" class="form-control" id="id_nome" name="nome" placeholder="Digite o nome">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_rg">RG:</label>
+                    <input type="text" class="form-control" id="id_rg" name="rg" placeholder="Digite o RG">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_org_expedidor">Org expedidor:</label>
+                    <select class="form-control" id="id_org_expedidor" name="org_expedidor">
+                        <option value="">Selecione o org expedidor</option>
+                        <option value="SSP">SSP</option>
+                        <option value="SSPO">SSPO</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="id_rg">RG:</label>
-                {{ form.rg }}
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="id_cpf">CPF:</label>
+                    <input type="text" class="form-control" id="id_cpf" name="cpf" placeholder="_________-__">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_email">Email:</label>
+                    <input type="email" class="form-control" id="id_email" name="email" placeholder="Ex.:semecgirau@gmail.com">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_telefone">Telefone:</label>
+                    <input type="text" class="form-control" id="id_telefone" name="telefone" placeholder="(82)_____-_____">
+                </div>
             </div>
-            <div class="form-group col-md-4" style="text-align: right;">
-                <label for="id_org_expedidor">Org expedidor:</label>
-                {{ form.org_expedidor }}
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="id_cargo">Cargo:</label>
+                    <input type="text" class="form-control" id="id_cargo" name="cargo" placeholder="Digite o cargo">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_vinculo">Vínculo:</label>
+                    <select class="form-control" id="id_vinculo" name="vinculo">
+                        <option value="">Selecione o vínculo</option>
+                        <option value="Efetivo">Efetivo</option>
+                        <option value="Temporário">Temporário</option>
+                        <option value="Comissionado">Comissionado</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_ch">CH:</label>
+                    <input type="text" class="form-control" id="id_ch" name="ch" placeholder="Digite a carga horária">
+                </div>
             </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_cpf">CPF:</label>
-                {{ form.cpf }}
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="id_instituicao">Instituição:</label>
+                    <input type="text" class="form-control" id="id_instituicao" name="instituicao" placeholder="Digite a instituição">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="id_escolaridade">Escolaridade:</label>
+                    <select class="form-control" id="id_escolaridade" name="escolaridade">
+                        <option value="">Selecione a escolaridade</option>
+                        <option value="Ens. Fundamental">Ens. Fundamental</option>
+                        <option value="Ens. Médio">Ens. Médio</option>
+                        <option value="Superior">Superior</option>
+                        <option value="Mestre">Mestre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label for="id_endereco">Endereço:</label>
+                    <input type="text" class="form-control" id="id_endereco" name="endereco" placeholder="Digite o endereço">
+                </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="id_email">Email:</label>
-                {{ form.email }}
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="id_imagem_perfil">Imagem perfil:</label>
+                    <input type="file" class="form-control" id="id_imagem_perfil" name="imagem_perfil" placeholder="Escolha uma imagem">
+                </div>
             </div>
-            <div class="form-group col-md-4"style="text-align: right;">
-                <label for="id_telefone">Telefone:</label>
-                {{ form.telefone }}
-            </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_cargo">Cargo:</label>
-                {{ form.cargo }}
-            </div>
-            <div class="form-group col-md-4">
-                <label for="id_vinculo">Vínculo:</label>
-                {{ form.vinculo }}
-            </div>
-            <div class="form-group col-md-4" style="text-align: right;"> <style></style>
-                <label for="id_ch">CH: </label>
-                {{ form.ch }}
-            </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_instituicao">Instituição:</label>
-                {{ form.instituicao }}
-            </div>
-            <div class="form-group col-md-4">
-                <label for="id_escolaridade">Escolaridade:</label>
-                {{ form.escolaridade }}
-            </div>
-            <div class="form-group col-md-4"style="text-align: right;">
-                <label for="id_endereco">Endereço:</label>
-                {{ form.endereco }}
-            </div>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id_imagem_perfil">Imagem perfil:</label>
-                {{ form.imagem_perfil }}
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            <button type="submit" class="btn btn-primary"style="background-color: #13855c; width: 200px; margin-top;">Cadastrar </button>
+          
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                 {% endfor %}
-        </ul>
-        {% endif %}
-
-        <script>
-            // Espera 3 segundos e remove as mensagens
-            setTimeout(function () {
-                document.querySelector('.messages').style.display = 'none';
-            }, 3000);
-        </script>
-    </form>
-
-</div>
+            </ul>
+            {% endif %}
+        </form>
+    </div>
 {% endblock %}
