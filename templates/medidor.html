@@ -1,4 +1,6 @@
 {% extends 'blank.html' %}
+
+
 {% block central %}
 <div style="margin-top: 20px;"> <!-- Adiciona um espaço de 20 pixels no topo -->
     <h1>Lista de Escolas
@@ -34,11 +36,22 @@
         <tbody>
             {% for escola in escolas %}
             <tr>
-                <td>{{ escola.inep }}</td>
+                <td><span class="inep" data-inep="{{ escola.inep }}">{{ escola.inep }}</span></td>
                 <td>{{ escola.nome }}</td>
                 <td>{{ escola.status }}</td>
             </tr>
             {% endfor %}
+            </tbody>
+            </table>
+            
+            <!-- Modal de cópia -->
+            <div id="modal-copia" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p id="valor-inep-copiado"></p>
+                    <button id="btn-copiar">Copiar</button>
+                </div>
+            </div>
         </tbody>
     </table>
 </div>

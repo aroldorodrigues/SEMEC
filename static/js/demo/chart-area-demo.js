@@ -116,3 +116,23 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+document.querySelectorAll('.inep').forEach(span => {
+  span.addEventListener('click', function () {
+    const inep = this.getAttribute('data-inep');
+    document.getElementById('valor-inep-copiado').textContent = inep;
+    document.getElementById('modal-copia').style.display = 'block';
+  });
+});
+
+// Fechar o modal ao clicar no botão "Fechar" (X)
+document.querySelector('.close').addEventListener('click', function () {
+  document.getElementById('modal-copia').style.display = 'none';
+});
+
+// Copiar o valor do INEP ao clicar no botão "Copiar"
+document.getElementById('btn-copiar').addEventListener('click', function () {
+  const valorInep = document.getElementById('valor-inep-copiado').textContent;
+  navigator.clipboard.writeText(valorInep);
+  alert('INEP copiado para a área de transferência: ' + valorInep);
+  document.getElementById('modal-copia').style.display = 'none';
+});
