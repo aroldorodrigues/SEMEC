@@ -1,7 +1,19 @@
 {% extends 'blank.html' %}
 {% block central %}
 <div style="margin-top: 20px;"> <!-- Adiciona um espaço de 20 pixels no topo -->
-    <h1>Lista de Escolas</h1>
+    <h1>Lista de Escolas
+        <!-- medidor.html -->
+        
+        <button type="button" id="btn-verificar" class="btn btn-primary">Verificar no Mapa</button>
+        
+        <script>
+            document.getElementById("btn-verificar").addEventListener("click", function () {
+                    // Redireciona para a mesma página com o parâmetro "mapa" na URL
+                    window.location.href = window.location.href + "?mapa=true";
+                });
+        </script>
+
+    </h1>
     <hr>
 
     <form action="?" method="GET"> 

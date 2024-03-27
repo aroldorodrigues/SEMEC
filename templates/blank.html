@@ -98,9 +98,10 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                <div class="sidebar-brand-text mx-3" style="color: #E7FF00;" center;>MODULOS</div>
+            <div class="sidebar-heading text-center">
+                <div class="sidebar-brand-text mx-3" style="color: #E7FF00;">MÓDULOS</div>
             </div>
+            
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
@@ -176,10 +177,10 @@
 
                     <!-- Topbar Search -->
     
-                    <div style="text-align: center;">
-                        <img src="\media\img\logoSemec.png" width="500" height="70">
+                    <div style="text-align: center; position: absolute; top: 0; left: 50%; transform: translateX(-50%);">
+                        <img src="\media\img\logoSemec003.png" width="500" height="70">
                     </div>
-
+                    
                     
                     <ul class="navbar-nav ml-auto">
         
@@ -233,16 +234,18 @@
 
                     </ul>
                     {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'logout' %}" id="form_logout">
-                        {% csrf_token %}
-                        <span style="color: #E7FF00;">Bem-vindo(a), {{ user.username }}!</span>
-                        <button type="button" onclick="confirmarLogout()"
-                            style="color: black; background-color: #E7FF00; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Sair</button>
-                        <input type="hidden" name="next" value="{% url 'home' %}">
-                    </form>
+                    <div class="text-right" style="padding: 10px;">
+                        <form method="post" action="{% url 'logout' %}" id="form_logout">
+                            {% csrf_token %}
+                            <span style="color: #E7FF00;">Bem-vindo(a), {{ user.username }}!</span>
+                            <button type="button" onclick="confirmarLogout()" class="btn btn-sm" style="color: black; background-color: #E7FF00; border: none; cursor: pointer; border-radius: 5px;">Sair</button>
+                            <input type="hidden" name="next" value="{% url 'home' %}">
+                        </form>
+                    </div>
+                    
                     {% else %}
                     <a href="{% url 'login' %}?next={{request.path}}"
-                        style="color: black; background-color: #E7FF00; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Login</a>
+                        style="color: black; background-color: #E7FF00; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">LOGIN</a>
                     {% endif %}
                     
                     <!-- Modal de Confirmação de Logout -->

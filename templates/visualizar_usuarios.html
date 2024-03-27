@@ -79,10 +79,11 @@
                 <p><strong>Telefone:</strong> {{ usuario.telefone }}</p>
                 <p><strong>Carga horária:</strong> {{ usuario.ch }}</p>
             </span>
-            <button class="btn btn-primary" onclick="mostrarDetalhes({{ usuario.id }})">Mais/Menos</button>
+            <button class="btn btn-primary" onclick="mostrarDetalhes({{ usuario.id }}) " style="background-color: #023059;">Mais/Menos</button>
             <button class="btn btn-danger" onclick="confirmarExclusao({{ usuario.id }})">Excluir</button>
             <a href="{% url 'editar_usuario' usuario.id %}">
-                <button class="btn btn-secondary">Editar</button>
+                <button class="btn btn-secondary" style="background-color: #03A64A;">Editar</button>
+
             </a>
         </div>
     </div>
