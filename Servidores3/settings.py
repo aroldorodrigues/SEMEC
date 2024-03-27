@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'servidores_app',
     'cpf_field',
     'rolepermissions',
-    'escolas_conectadas_app'
+    'escolas_conectadas_app',
+    'home_app'
 ]
 
 MIDDLEWARE = [
