@@ -1,12 +1,10 @@
 {% extends 'blank.html' %}
 {% block central %}
+
 <div style="position: relative;">
     <h1 style="text-align: center; font-weight: bold; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; font-size: 24px;">CADASTRAR SERVIDORES</h1>
     <div style="background-color: #023059; height: 50px;"></div>
 </div>
-
-
-
 
 
 <div class="container-fluid">
@@ -30,7 +28,7 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         
-        <form method="post" enctype="multipart/form-data" class="text-center" style="margin-top: -200px;">
+        <form method="post" enctype="multipart/form-data" class="text-center" style="margin-top: 0px;">
             {% csrf_token %}
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-4" style="border: 1px solid #ccc; padding: 5px;">

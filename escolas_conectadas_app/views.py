@@ -6,6 +6,7 @@ from .mapa_escolas import mapa
 def verificar(request):
      if 'mapa' in request.GET:
         mapa()
+        
      txt_nome = request.GET.get('nome')
      if txt_nome:
           escolas = Escolas.objects.filter(nome__icontains = txt_nome)

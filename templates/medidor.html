@@ -5,24 +5,32 @@
 <div style="margin-top: 20px;"> <!-- Adiciona um espaço de 20 pixels no topo -->
     <h1>Lista de Escolas
         <!-- medidor.html -->
-        
-        <button type="button" id="btn-verificar" class="btn btn-primary">Verificar no Mapa</button>
-        
-        <script>
-            document.getElementById("btn-verificar").addEventListener("click", function () {
-                    // Redireciona para a mesma página com o parâmetro "mapa" na URL
-                    window.location.href = window.location.href + "?mapa=true";
-                });
-        </script>
 
     </h1>
     <hr>
 
-    <form action="?" method="GET"> 
-        <input type="text" name="nome" id="" value="{{ request.GET.nome}}" class = "p-1 border" autocomplete="off" placeholder="Nome ou parte dele...">
+    <form action="" method="GET">
+        <input type="text" name="nome" value="{{ request.GET.nome }}" class="p-1 border" autocomplete="off"
+            placeholder="Nome ou parte dele...">
         <button type="submit" class="btn btn-success">Buscar</button>
         <a href="{% url 'programas' %}" class="btn btn-light">Limpar</a>
+        <button type="button" id="btn-verificar" class="btn btn-primary">Verificar no Mapa</button>
     </form>
+    
+    <script>
+        document.getElementById("btn-verificar").addEventListener("click", function (event) {
+            event.preventDefault(); // Evita o comportamento padrão de enviar o formulário
+            var url = window.location.href; // Obtém a URL atual
+
+            // Adiciona "?mapa=true" à URL apenas se já não estiver presente
+            if (url.indexOf('mapa=true') === -1) {
+                url += (url.indexOf('?') !== -1 ? '&' : '?') + 'mapa=true';
+            }
+
+            // Redireciona para a URL atualizada
+            window.location.href = url;
+        });
+    </script>
 
     <hr>
     <table border="1">
@@ -36,7 +44,7 @@
         <tbody>
             {% for escola in escolas %}
             <tr>
-                <td><span class="inep" data-inep="{{ escola.inep }}">{{ escola.inep }}</span></td>
+                <td>{{ escola.inep }}</td>
                 <td>{{ escola.nome }}</td>
                 <td>{{ escola.status }}</td>
             </tr>
