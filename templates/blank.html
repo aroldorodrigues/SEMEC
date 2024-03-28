@@ -87,7 +87,7 @@
                     <img src="\media\img\logosige.png" alt="Logo"
                         style="display: block; margin: 0 auto; width: 140px; height: 140px; color: #fffefeef;">
                 </div>
-                <div class="sidebar-brand-text mx-3 ml-auto" style="color: #E7FF00;">SEMEC</div>
+                <div class="sidebar-brand-text mx-3 ml-auto" style="color: #F2E313;">SEMEC</div>
             </a>
 
 
@@ -99,18 +99,18 @@
 
             <!-- Heading -->
             <div class="sidebar-heading text-center">
-                <div class="sidebar-brand-text mx-3" style="color: #E7FF00;">MÓDULOS</div>
+                <div class="sidebar-brand-text mx-3" style="color: #F2E313;">MÓDULOS</div>
             </div>
             
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog" style="color: #E7FF00;"></i>
-                    <span style="color: #E7FF00;"> Funcionários</span>
+                    <i class="fas fa-fw fa-cog" style="color: #F2E313;"></i>
+                    <span style="color: #F2E313;"> Funcionários</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-yellow-500 py-2 collapse-inner rounded" style="background-color: #E7FF00;">
+                    <div class="bg-yellow-500 py-2 collapse-inner rounded" style="background-color: #F2E313;">
                         <h6 class="collapse-header" style="color: #000000;"> Funcionários:</h6>
                         <a class="collapse-item" href="#" onclick="navigateAndClearURL('{% url 'visualizar_usuarios'%}')">Funcionários
                             Cadastrados</a>
@@ -124,11 +124,11 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
                     aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench" style="color: #E7FF00;"></i>
-                    <span style="color: #E7FF00;">Programas</span>
+                    <i class="fas fa-fw fa-wrench" style="color: #F2E313;"></i>
+                    <span style="color: #F2E313;">Programas</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-yellow-500 py-2 collapse-inner rounded" style="background-color: #E7FF00;">
+                    <div class="bg-yellow-500 py-2 collapse-inner rounded" style="background-color: #F2E313;">
                         <h6 class="collapse-header" style="color: #000000;">Próximo:</h6>
                         <a class="collapse-item" href="#" onclick="navigateAndClearURL('{% url 'programas'%}')">Medidor</a>
                         <a class="collapse-item" style="color: #000000;">outro...</a>
@@ -163,7 +163,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Adicione um item de navegação no lado direito com uma URL específica -->
         <li class="nav-item">
-            <a class="collapse-item" href="#" onclick="navigateAndClearURL('{% url 'home' %}')" style="color: #E7FF00;">Inicio</a>
+            <a class="collapse-item" href="#" onclick="navigateAndClearURL('{% url 'home' %}')" style="color: #F2E313;">Inicio</a>
 
             
         </li>
@@ -237,15 +237,15 @@
                     <div class="text-right" style="padding: 10px;">
                         <form method="post" action="{% url 'logout' %}" id="form_logout">
                             {% csrf_token %}
-                            <span style="color: #E7FF00;">Bem-vindo(a), {{ user.username }}!</span>
-                            <button type="button" onclick="confirmarLogout()" class="btn btn-sm" style="color: black; background-color: #E7FF00; border: none; cursor: pointer; border-radius: 5px;">Sair</button>
+                            <span style="color: #F2E313;">Bem-vindo(a), {{ user.username }}!</span>
+                            <button type="button" onclick="confirmarLogout()" class="btn btn-sm" style="color: black; background-color: #F2E313; border: none; cursor: pointer; border-radius: 5px;">Sair</button>
                             <input type="hidden" name="next" value="{% url 'home' %}">
                         </form>
                     </div>
                     
                     {% else %}
                     <a href="{% url 'login' %}?next={{request.path}}"
-                        style="color: black; background-color: #E7FF00; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">LOGIN</a>
+                        style="color: black; background-color: #F2E313; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">LOGIN</a>
                     {% endif %}
                     
                     <!-- Modal de Confirmação de Logout -->
@@ -297,7 +297,7 @@
             <footer class="sticky-footer bg-gradient-success" style="height: 70px;" > 
                 <div class="container my-auto">
                     <div class="text-center my-auto">
-                        <div class="sidebar-brand-text mx-3" style="color: #E7FF00;"> SEMEC &copy; 2024</span> </div>
+                        <div class="sidebar-brand-text mx-3" style="color: #F2E313;"> SEMEC &copy; 2024</span> </div>
                     </div>
                 </div>
             </footer>
