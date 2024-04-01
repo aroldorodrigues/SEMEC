@@ -1,0 +1,10 @@
+/* Estilos para telas menores que 768px (exemplo: smartphones) */
+@media (max-width: 768px) {
+    /* Adicione seus estilos específicos para telas menores aqui */
+  }
+  
+  /* Estilos para telas maiores que 768px (exemplo: desktops) */
+  @media (min-width: 769px) {
+    /* Adicione seus estilos específicos para telas maiores aqui */
+  }
+  
