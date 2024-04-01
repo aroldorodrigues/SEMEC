@@ -29,8 +29,13 @@
 
             // Redireciona para a URL atualizada
             window.location.href = url;
+
+            // Remove "?mapa=true" da URL após o redirecionamento
+            var novaURL = window.location.href.replace('?mapa=true', '');
+            history.replaceState(null, null, novaURL);
         });
     </script>
+
 
     <hr>
     <table border="1">
