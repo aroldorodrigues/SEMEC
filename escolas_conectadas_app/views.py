@@ -4,6 +4,7 @@ from .mapa_escolas import mapa
 #from .medir import atualizar_status_escolas
 
 def verificar(request):
+     
      if 'mapa' in request.GET:
         mapa()
         
