@@ -7,3 +7,4 @@ class Escolas(models.Model):
     status = models.CharField(max_length = 40,blank=True)
     longitude = models.CharField(max_length = 20,blank=True)
     latitude = models.CharField(max_length = 20,blank=True)
+    endereco = models.CharField(max_length = 50,blank=True)
