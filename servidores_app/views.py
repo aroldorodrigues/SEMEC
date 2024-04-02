@@ -25,7 +25,7 @@ def visualizar_usuarios(request):
     context = {'usuarios': usuarios}
     return render(request, 'visualizar_usuarios.html', context)
 
-
+@has_permission_decorator('ver_usuario')
 def cadastrar_usuarios(request):
     
     if request.method == 'POST':
@@ -37,7 +37,7 @@ def cadastrar_usuarios(request):
     else:
         form = UsuarioForm()
     return render (request,'cadastrar_usuarios.html', {'form': form})
-
+@has_permission_decorator('ver_usuario')
 def editar_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, id=usuario_id)
 
@@ -51,7 +51,7 @@ def editar_usuario(request, usuario_id):
         form = UsuarioForm(instance=usuario)
 
     return render(request, 'editar_usuario.html', {'form': form})
-
+@has_permission_decorator('ver_usuario')
 def criar_usuario (request):
     user = User.objects.create_user(username="teste",password="1234")
     user.save
