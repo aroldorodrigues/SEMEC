@@ -2,6 +2,6 @@
 from django.urls import path
 from .views import verificar
 urlpatterns = [
-    path('/medidor', verificar, name='programas'),
+    path('medidor', verificar, name='programas'),
     
 ]
