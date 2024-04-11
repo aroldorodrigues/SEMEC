@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-j^-76m)v#jd^o0y3dlcknoz0&0nah42#fcd$a_j$o^=+jnpe)x
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['3.92.181.47']
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['3.92.181.47']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'cpf_field',
     'rolepermissions',
     'escolas_conectadas_app',
-    'home_app'
+    'home_app',
+    'dispositivos_app'
 ]
 
 MIDDLEWARE = [

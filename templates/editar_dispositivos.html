@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Dispositivo</title>
+</head>
+
+<body>
+    <h1>Editar Dispositivo</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <label for="id_documento">Documento:</label>
+            {{ form.documento }}
+        </div>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+
+</html>

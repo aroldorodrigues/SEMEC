@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('home_app.urls')),
     path('admin/', admin.site.urls),
     path('servidores/', include('servidores_app.urls')),
-    path('programas', include('escolas_conectadas_app.urls')),
+    path('programas/', include('escolas_conectadas_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('dispositivos/', include('dispositivos_app.urls')),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

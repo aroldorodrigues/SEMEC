@@ -1,0 +1,36 @@
+{% extends 'blank.html' %}
+
+{% block central %}
+<h1>
+<form action="" method="GET" style="margin: 20px 0;">
+    <input type="text" name="nome" value="{{ request.GET.nome }}" autocomplete="off" placeholder="Nome ou parte dele..."
+        style="margin-left: 130px;">
+    <button type="submit" class="btn btn-success" style="background-color: #0E7331; color: white;">Buscar</button>
+    <a href="{% url 'visualizar_dispositivos' %}" class="btn btn-light"
+        style="margin-left: 10px;background-color: #F2E313; color: black;">Limpar</a>
+    <button type="button" id="btn-verificar" class="btn btn-primary float-right">
+
+</form>
+</h1>
+
+<h1>Dispositivos Cadastrados</h1>
+<ul>
+
+    {% for dispositivo in dispositivos %}
+    <li>
+        <a href="{% url 'editar_dispositivos' dispositivo.id %}">
+            {{ dispositivo.tipo }} - {{ dispositivo.nome_servidor }} -
+            {{ dispositivo.numero_de_serie }} - {{ dispositivo.status }}
+        </a>
+        <a href="{% url 'adicionar_documento' dispositivo.id %}">Adicionar Documento</a>
+
+        <!-- Lista de documentos relacionados ao dispositivo -->
+        <ul>
+            {% for documento in dispositivo.documentos.all %}
+            <li><a href="{{ documento.arquivo.url }}" target="_blank">{{ documento.arquivo.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
