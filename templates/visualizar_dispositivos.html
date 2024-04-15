@@ -1,36 +1,44 @@
 {% extends 'blank.html' %}
 
 {% block central %}
-<h1>
-<form action="" method="GET" style="margin: 20px 0;">
-    <input type="text" name="nome" value="{{ request.GET.nome }}" autocomplete="off" placeholder="Nome ou parte dele..."
-        style="margin-left: 130px;">
-    <button type="submit" class="btn btn-success" style="background-color: #0E7331; color: white;">Buscar</button>
-    <a href="{% url 'visualizar_dispositivos' %}" class="btn btn-light"
-        style="margin-left: 10px;background-color: #F2E313; color: black;">Limpar</a>
-    <button type="button" id="btn-verificar" class="btn btn-primary float-right">
-
-</form>
-</h1>
-
-<h1>Dispositivos Cadastrados</h1>
-<ul>
-
-    {% for dispositivo in dispositivos %}
-    <li>
-        <a href="{% url 'editar_dispositivos' dispositivo.id %}">
-            {{ dispositivo.tipo }} - {{ dispositivo.nome_servidor }} -
-            {{ dispositivo.numero_de_serie }} - {{ dispositivo.status }}
-        </a>
-        <a href="{% url 'adicionar_documento' dispositivo.id %}">Adicionar Documento</a>
-
-        <!-- Lista de documentos relacionados ao dispositivo -->
-        <ul>
-            {% for documento in dispositivo.documentos.all %}
-            <li><a href="{{ documento.arquivo.url }}" target="_blank">{{ documento.arquivo.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </li>
-    {% endfor %}
-</ul>
-{% endblock %}
+<div style="margin: 20 auto;"> <!-- Adiciona margens laterais e define a largura máxima -->
+    <div style="position: relative;">
+        <h1 style="text-align: center; font-weight: bold; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; font-size: 24px;">DISPOSITIVOS CADASTRADOS</h1>
+        <div style="background-color: #023059; height: 50px;"></div>
+    </div>
+    <div class="container">
+        <form action="" method="GET" style="margin: 20px 0;">
+            <input type="text" name="nome" value="{{ request.GET.nome }}" autocomplete="off" placeholder="Nome ou parte dele..."
+                style="margin-left: -80px;"> <!-- Ajuste a margem esquerda aqui -->
+    
+            <button type="submit" class="btn btn-success" style="background-color: #0E7331; color: white;">Buscar</button>
+            <a href="{% url 'visualizar_dispositivos' %}" class="btn btn-light ml-2" style="background-color: #F2E313; color: black;">Limpar</a>
+        </form>
+    </div>
+    <ul class="list-group">
+        {% for dispositivo in dispositivos %}
+        <li class="list-group-item">
+            <div class="dispositivo-info">
+                <a href="{% url 'editar_dispositivos' dispositivo.id %}" class="dispositivo-link">
+                    <span class="dispositivo-id">{{ forloop.counter }}</span> <!-- Adicionando ID de 1 a 100 -->
+                    <span class="dispositivo-tipo">Chromebook -</span> <!-- Adicionando "Chromebook" -->
+                    <span class="dispositivo-nome">{{ dispositivo.nome_servidor }}</span>
+                    <span class="dispositivo-serie">{{ dispositivo.numero_de_serie }}</span>
+                    <span class="dispositivo-status">{{ dispositivo.status }}</span>
+                </a>
+                <a href="{% url 'adicionar_documento' dispositivo.id %}" class="btn btn-primary float-right">Adicionar Documento</a> <!-- Adicionando a classe float-right -->
+            </div>
+            <!-- Lista de documentos relacionados ao dispositivo -->
+            <ul class="list-group documentos-list">
+                {% for documento in dispositivo.documentos.all %}
+                <li class="list-group-item">
+                    <a href="{{ documento.arquivo.url }}" class="documento-link" target="_blank">{{ documento.arquivo.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    {% endblock %}
+    

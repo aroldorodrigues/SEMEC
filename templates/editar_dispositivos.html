@@ -1,22 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'blank.html' %}
+{% block central %}
+<div style="margin: 0 auto;"> <!-- Adiciona margens laterais e define a largura máxima -->
+    <div style="position: relative;">
+        <h1 style="text-align: center; font-weight: bold; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; font-size: 24px;">EDITAR DISPOSITIVOS</h1>
+        <div style="background-color: #023059; height: 50px;"></div>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Dispositivo</title>
-</head>
-
-<body>
-    <h1>Editar Dispositivo</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div>
-            <label for="id_documento">Documento:</label>
-            {{ form.documento }}
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data" id="editForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_tipo">Tipo:</label>
+                        <input type="text" name="tipo" id="id_tipo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_nome_servidor">Nome do Servidor:</label>
+                        <input type="text" name="nome_servidor" id="id_nome_servidor" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_numero_de_serie">Número de Série:</label>
+                        <input type="text" name="numero_de_serie" id="id_numero_de_serie" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_status">Status:</label>
+                        <input type="text" name="status" id="id_status" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_documento">Documento:</label>
+                        <input type="file" name="documento" id="id_documento" class="form-control-file">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary" id="submitButton">Salvar</button>
+                    </div>
+                </form>
+                <div id="successMessage" style="display: none; text-align: center; color: green;">Alterações feitas com sucesso!</div>
+            </div>
         </div>
-        <button type="submit">Salvar</button>
-    </form>
-</body>
+    </div>
+</div>
 
-</html>
+<script>
+    document.getElementById("editForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio do formulário padrão
+
+        // Mostra a mensagem de sucesso por 3 segundos
+        document.getElementById("successMessage").style.display = "block";
+        setTimeout(function() {
+            document.getElementById("successMessage").style.display = "none";
+            document.getElementById("editForm").submit(); // Envie o formulário após exibir a mensagem
+        }, 3000); // 3 segundos
+    });
+</script>
+
+{% endblock %}

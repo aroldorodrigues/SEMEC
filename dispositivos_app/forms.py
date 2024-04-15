@@ -6,7 +6,7 @@ class DispositivoForm(forms.ModelForm):
 
     class Meta:
         model = Dispositivo
-        fields = ['status', 'tipo', 'nome_servidor', 'numero_de_serie', 'cpf']
+        fields = ['Status', 'tipo', 'nome_servidor', 'CPF']
 
 class DocumentoForm(forms.ModelForm):
     class Meta:
