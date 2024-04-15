@@ -18,7 +18,7 @@ class Dispositivo(models.Model):
     Status = models.CharField(max_length=255, choices=STATUS_CHOICES, blank=True)
     tipo = models.CharField(max_length=255, choices=TIPO_CHOICES, blank=True)
     nome_servidor = models.CharField(max_length=100, blank=True)
-    numero_de_serie = models.CharField(max_length=50, blank=True)
+    # numero_de_serie = models.CharField(max_length=50, blank=True)
     CPF = models.CharField(max_length=50, blank=True)
     
     def __str__(self):
